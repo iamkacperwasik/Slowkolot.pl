@@ -1,5 +1,9 @@
-import {FC, ReactNode} from 'react';
+'use client';
 
-export const WordDefinition: FC<{children: ReactNode}> = ({children}) => {
-  return <p className='mt-2 mb-8 p-4 bg-gray-900 font-mono'>{children}</p>;
+import {useWordStore} from 'stores/WordStore';
+
+export const WordDefinition = () => {
+  const definition = useWordStore(({definition}) => definition);
+
+  return <p className='mt-2 mb-8 p-4 bg-gray-900 font-mono'>{definition}</p>;
 };

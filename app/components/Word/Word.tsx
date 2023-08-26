@@ -1,5 +1,9 @@
-import {FC, ReactNode} from 'react';
+'use client';
 
-export const Word: FC<{children: ReactNode}> = ({children}) => {
-  return <h1 className='text-5xl mb-4 font-semibold font-serif w-max'>{children}</h1>;
+import {useWordStore} from 'stores/WordStore';
+
+export const Word = () => {
+  const word = useWordStore(({word}) => word);
+
+  return <h1 className='text-5xl mb-4 font-semibold font-serif w-max'>{word}</h1>;
 };
