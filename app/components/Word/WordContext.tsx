@@ -1,15 +1,23 @@
 'use client';
 
+import {Word, wordAtom, definitionAtom, likesAtom, dislikesAtom} from 'atoms/WordAtoms';
+import {createStore} from 'jotai';
 import type {FC, ReactNode} from 'react';
-import {Word, useWordStore} from 'stores/WordStore';
+import {Provider as JotaiProvider} from 'jotai';
 
 type Props = {
-  value: Word;
+  word: Word;
   children: ReactNode;
 };
 
-export const WordContext: FC<Props> = ({children, value}) => {
-  useWordStore.setState(value);
+export const WordContext: FC<Props> = ({children, word: {word, definition, dislikes, likes}}) => {
+  const WordStore = createStore();
 
-  return children;
+  WordStore.set(wordAtom, word);
+  WordStore.set(definitionAtom, definition);
+
+  WordStore.set(likesAtom, likes);
+  WordStore.set(dislikesAtom, dislikes);
+
+  return <JotaiProvider store={WordStore}>{children}</JotaiProvider>;
 };

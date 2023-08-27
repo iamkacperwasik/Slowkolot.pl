@@ -1,3 +1,10 @@
+'use client';
+
+import {likesAtom} from 'atoms/WordAtoms';
+import {useAtomValue} from 'jotai';
+
 export const LikeCounter = () => {
-  return <p>21,200</p>;
+  const likes = useAtomValue(likesAtom);
+
+  return <p>{likes}</p>;
 };
