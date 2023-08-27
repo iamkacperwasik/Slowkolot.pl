@@ -1,12 +1,15 @@
 'use client';
 
-import {FC, ReactNode} from 'react';
+import type {FC, ReactNode} from 'react';
 import {Word, useWordStore} from 'stores/WordStore';
 
-type Props = {word: Word; children: ReactNode};
+type Props = {
+  value: Word;
+  children: ReactNode;
+};
 
-export const WordContext: FC<Props> = ({children, word}) => {
-  useWordStore.setState(word);
+export const WordContext: FC<Props> = ({children, value}) => {
+  useWordStore.setState(value);
 
   return children;
 };
