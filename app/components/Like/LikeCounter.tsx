@@ -1,7 +1,7 @@
 'use client';
 
-import {likesAtom} from 'atoms/WordAtoms';
 import {useAtomValue} from 'jotai';
+import {likesAtom} from 'word/atoms/WordAtoms';
 
 export const LikeCounter = () => {
   const likes = useAtomValue(likesAtom);

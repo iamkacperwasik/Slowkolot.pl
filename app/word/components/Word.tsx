@@ -1,7 +1,7 @@
 'use client';
 
-import {wordAtom} from 'atoms/WordAtoms';
 import {useAtomValue} from 'jotai';
+import {wordAtom} from 'word/atoms/WordAtoms';
 
 export const Word = () => {
   const word = useAtomValue(wordAtom);

@@ -1,9 +1,9 @@
 'use client';
 
-import {Word, wordAtom, definitionAtom, likesAtom, dislikesAtom} from 'atoms/WordAtoms';
 import {createStore} from 'jotai';
 import type {FC, ReactNode} from 'react';
 import {Provider as JotaiProvider} from 'jotai';
+import {Word, wordAtom, definitionAtom, likesAtom, dislikesAtom} from 'word/atoms/WordAtoms';
 
 type Props = {
   word: Word;
