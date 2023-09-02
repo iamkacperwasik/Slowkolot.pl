@@ -7,7 +7,7 @@ export type IpPostResponse = {
 
 export function POST({ip}: NextRequest): NextResponse<IpPostResponse> {
   return NextResponse.json({
-    ip: ip ?? '127.0.0.1',
+    ip: ip ?? '127.0.0.1', // 127.0.0.1 is fallback used only in dev environment
   });
 }
 
