@@ -10,3 +10,5 @@ export function POST({ip}: NextRequest): NextResponse<IpPostResponse> {
     ip: ip ?? '127.0.0.1',
   });
 }
+
+export const runtime = 'edge';
