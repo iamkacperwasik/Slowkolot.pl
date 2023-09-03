@@ -3,30 +3,55 @@ export type Json = string | number | boolean | null | {[key: string]: Json | und
 export interface Database {
   public: {
     Tables: {
-      words: {
+      votes: {
         Row: {
           created_at: string;
-          definition: string;
-          dislikes: number;
           id: number;
-          likes: number;
-          word: string;
+          ip: string;
+          is_positive: boolean;
+          word_id: number;
         };
         Insert: {
           created_at?: string;
-          definition: string;
-          dislikes?: number;
           id?: number;
-          likes?: number;
-          word: string;
+          ip: string;
+          is_positive: boolean;
+          word_id: number;
         };
         Update: {
           created_at?: string;
-          definition?: string;
-          dislikes?: number;
           id?: number;
-          likes?: number;
+          ip?: string;
+          is_positive?: boolean;
+          word_id?: number;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'votes_word_id_fkey';
+            columns: ['word_id'];
+            referencedRelation: 'words';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
+      words: {
+        Row: {
+          created_at: string;
+          id: number;
+          word: string;
+          word_definition: string;
+        };
+        Insert: {
+          created_at?: string;
+          id?: number;
+          word: string;
+          word_definition: string;
+        };
+        Update: {
+          created_at?: string;
+          id?: number;
           word?: string;
+          word_definition?: string;
         };
         Relationships: [];
       };
@@ -39,11 +64,9 @@ export interface Database {
         Args: Record<PropertyKey, never>;
         Returns: {
           created_at: string;
-          definition: string;
-          dislikes: number;
           id: number;
-          likes: number;
           word: string;
+          word_definition: string;
         }[];
       };
     };

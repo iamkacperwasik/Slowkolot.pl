@@ -2,18 +2,20 @@ import 'globals.css';
 
 import {Inter} from 'next/font/google';
 import {WordContext} from 'ui/components/Word/WordContext';
+import {get_random_word} from 'utils/get_random_word';
 
 const inter = Inter({subsets: ['latin']});
 
 export default async function RootLayout({children}: {children: React.ReactNode}) {
-  // const radomWord = await getRandomWord();
+  const {word, word_definition, id: word_id} = await get_random_word();
 
   return (
     <WordContext
       context={{
-        word: 'Word',
-        word_definition: 'lorem ipsum',
-        up_votes: 1,
+        word,
+        word_definition,
+        word_id,
+        up_votes: 0,
         down_votes: 0,
       }}
     >

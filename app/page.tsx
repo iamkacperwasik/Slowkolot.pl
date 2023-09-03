@@ -4,6 +4,7 @@ import {WordDefinition} from 'ui/components/Word/WordDefinition';
 
 export type HomePageContext = {
   word: string;
+  word_id: number;
   word_definition: string;
   up_votes: number;
   down_votes: number;
