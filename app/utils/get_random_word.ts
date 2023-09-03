@@ -1,8 +1,8 @@
-import {supabaseClient} from 'supabase/client';
-import {DbResult} from 'supabase/database.types';
+import {supabase_client} from 'supabase/client';
+import {DbResult} from 'supabase/helpers.types';
 
-export const getRandomWord = async () => {
-  const query = supabaseClient
+export const get_random_word = async () => {
+  const query = supabase_client
     .rpc('get_random_word')
     .select('word, definition, likes, dislikes')
     .single();
