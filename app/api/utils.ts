@@ -60,5 +60,5 @@ export const handle_vote_request = async (
 
   const vote = await utils.fetch_vote();
 
-  handler(vote, utils);
+  return handler(vote, utils);
 };

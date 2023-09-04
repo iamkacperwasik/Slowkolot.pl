@@ -4,7 +4,7 @@ import {NextRequest, NextResponse} from 'next/server';
 export const runtime = 'edge';
 
 export function POST(request: NextRequest) {
-  handle_vote_request(request, async (vote, actions) => {
+  return handle_vote_request(request, async (vote, actions) => {
     if (!vote) {
       await actions.add_vote('upvote');
     }
