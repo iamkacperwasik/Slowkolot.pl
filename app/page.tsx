@@ -6,7 +6,7 @@ export type HomePageContext = {
   word: string;
   word_id: number;
   word_definition: string;
-  up_votes: number;
+  upvotes: number;
 };
 
 export default function Home() {

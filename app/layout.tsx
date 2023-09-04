@@ -15,7 +15,7 @@ export default async function RootLayout({children}: {children: React.ReactNode}
         word,
         word_definition,
         word_id,
-        up_votes: 0,
+        upvotes: 0,
       }}
     >
       <html lang='pl'>

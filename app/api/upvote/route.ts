@@ -1,5 +1,5 @@
 import {VoteRequestBody} from 'api/types';
-import {NextRequest} from 'next/server';
+import {NextRequest, NextResponse} from 'next/server';
 import {supabase_client} from 'supabase/client';
 
 export const runtime = 'edge';
@@ -38,5 +38,13 @@ export async function POST({ip = '127.0.0.1', json: parse_body}: NextRequest) {
       .eq('word_id', word_id);
   }
 
-  return new Response('ok');
+  const {count: upvotes = 0} = await supabase_client
+    .from('votes')
+    .select('*', {count: 'exact', head: true})
+    .eq('is_positive', true)
+    .eq('word_id', word_id);
+
+  return NextResponse.json({
+    upvotes,
+  });
 }
