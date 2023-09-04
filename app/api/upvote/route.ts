@@ -1,50 +1,33 @@
 import {VoteRequestBody} from 'api/types';
+import {create_utils} from 'api/utils';
 import {NextRequest, NextResponse} from 'next/server';
-import {supabase_client} from 'supabase/client';
 
 export const runtime = 'edge';
 
 export async function POST({ip = '127.0.0.1', json: parse_body}: NextRequest) {
   const {word_id}: VoteRequestBody = await parse_body();
-
   if (!word_id) return;
 
-  const {data: vote} = await supabase_client
-    .from('votes')
-    .select('ip, is_positive')
-    .eq('ip', ip)
-    .eq('word_id', word_id)
-    .single();
+  const {fetch_vote, add_vote, delete_vote, update_vote_to, fetch_upvote_count} = create_utils(
+    word_id,
+    ip,
+  );
+
+  const vote = await fetch_vote();
 
   if (!vote) {
-    await supabase_client.from('votes').insert({
-      word_id,
-      ip,
-      is_positive: true,
-    });
+    await add_vote('upvote');
   }
 
   if (vote && vote.is_positive === true) {
-    await supabase_client.from('votes').delete().eq('ip', ip).eq('word_id', word_id);
+    await delete_vote();
   }
 
   if (vote && vote.is_positive === false) {
-    await supabase_client
-      .from('votes')
-      .update({
-        is_positive: true,
-      })
-      .eq('ip', ip)
-      .eq('word_id', word_id);
+    await update_vote_to('upvote');
   }
 
-  const {count: upvotes = 0} = await supabase_client
-    .from('votes')
-    .select('*', {count: 'exact', head: true})
-    .eq('is_positive', true)
-    .eq('word_id', word_id);
-
   return NextResponse.json({
-    upvotes,
+    upvotes: await fetch_upvote_count(),
   });
 }
