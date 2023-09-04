@@ -2,7 +2,7 @@ import 'globals.css';
 
 import {Inter} from 'next/font/google';
 import {WordContext} from 'ui/components/Word/WordContext';
-import {get_random_word} from 'utils/get_random_word';
+import {get_random_word} from 'ui/utils/get_random_word';
 
 const inter = Inter({subsets: ['latin']});
 
