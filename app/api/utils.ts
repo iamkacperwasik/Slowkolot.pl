@@ -1,50 +1,64 @@
+import {NextRequest} from 'next/server';
 import {supabase_client} from 'supabase/client';
+import {VoteRequestBody, VoteRequestHandler, VoteUtils} from 'api/types';
 
-export const create_utils = (word_id: number, ip: string) => ({
-  fetch_vote: async () => {
-    const {data: vote} = await supabase_client
-      .from('votes')
-      .select('ip, is_positive')
-      .eq('ip', ip)
-      .eq('word_id', word_id)
-      .single();
+export const handle_vote_request = async (
+  {ip = '127.0.0.1', json: parse_body}: NextRequest,
+  handler: VoteRequestHandler,
+) => {
+  const {word_id}: VoteRequestBody = await parse_body();
+  if (!word_id) return;
 
-    return vote;
-  },
+  const utils = {
+    fetch_vote: async () => {
+      const {data: vote} = await supabase_client
+        .from('votes')
+        .select('ip, is_positive')
+        .eq('ip', ip)
+        .eq('word_id', word_id)
+        .single();
 
-  fetch_upvote_count: async () => {
-    const {count: upvotes = 0} = await supabase_client
-      .from('votes')
-      .select('*', {count: 'exact', head: true})
-      .eq('is_positive', true)
-      .eq('word_id', word_id);
+      return vote;
+    },
 
-    return upvotes;
-  },
+    fetch_upvote_count: async () => {
+      const {count: upvotes} = await supabase_client
+        .from('votes')
+        .select('*', {count: 'exact', head: true})
+        .eq('is_positive', true)
+        .eq('word_id', word_id);
 
-  add_vote: async (option: 'upvote' | 'downvote') => {
-    const is_positive = option === 'upvote' ? true : false;
+      return upvotes ?? 0;
+    },
 
-    await supabase_client.from('votes').insert({
-      word_id,
-      ip,
-      is_positive,
-    });
-  },
+    add_vote: async (option) => {
+      const is_positive = option === 'upvote' ? true : false;
 
-  delete_vote: async () => {
-    await supabase_client.from('votes').delete().eq('ip', ip).eq('word_id', word_id);
-  },
-
-  update_vote_to: async (option: 'upvote' | 'downvote') => {
-    const is_positive = option === 'upvote' ? true : false;
-
-    await supabase_client
-      .from('votes')
-      .update({
+      await supabase_client.from('votes').insert({
+        word_id,
+        ip,
         is_positive,
-      })
-      .eq('ip', ip)
-      .eq('word_id', word_id);
-  },
-});
+      });
+    },
+
+    delete_vote: async () => {
+      await supabase_client.from('votes').delete().eq('ip', ip).eq('word_id', word_id);
+    },
+
+    update_vote_to: async (option) => {
+      const is_positive = option === 'upvote' ? true : false;
+
+      await supabase_client
+        .from('votes')
+        .update({
+          is_positive,
+        })
+        .eq('ip', ip)
+        .eq('word_id', word_id);
+    },
+  } satisfies VoteUtils;
+
+  const vote = await utils.fetch_vote();
+
+  handler(vote, utils);
+};
