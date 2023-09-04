@@ -25,14 +25,7 @@ export interface Database {
           is_positive?: boolean;
           word_id?: number;
         };
-        Relationships: [
-          {
-            foreignKeyName: 'votes_word_id_fkey';
-            columns: ['word_id'];
-            referencedRelation: 'words';
-            referencedColumns: ['id'];
-          },
-        ];
+        Relationships: [];
       };
       words: {
         Row: {
