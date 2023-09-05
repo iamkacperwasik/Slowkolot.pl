@@ -1,7 +1,7 @@
 'use client';
 
-import {AiOutlineDislike as DownVoteIcon} from 'react-icons/ai';
 import {useVote} from 'ui/hooks/useVote';
+import {DownVoteIcon} from './DownVoteIcon';
 
 export const DownVoteButton = () => {
   const {downvote} = useVote();

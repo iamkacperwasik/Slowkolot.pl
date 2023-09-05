@@ -1,10 +1,11 @@
+import {VoteResponse} from 'api/types';
 import {handle_vote_request} from 'api/utils';
 import {NextRequest, NextResponse} from 'next/server';
 
 export const runtime = 'edge';
 
 export function POST(request: NextRequest) {
-  return handle_vote_request(request, async (vote, actions) => {
+  return handle_vote_request(request, async (vote, actions): Promise<VoteResponse> => {
     if (!vote) {
       await actions.add_vote('downvote');
     }

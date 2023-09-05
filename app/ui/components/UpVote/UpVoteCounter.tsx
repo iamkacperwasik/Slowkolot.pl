@@ -1,10 +1,10 @@
 'use client';
 
 import {useAtomValue} from 'jotai';
-import {upvotes_atom} from 'ui/atoms/vote/upvotes_atom';
+import {upvotes_count_atom} from 'ui/atoms/vote/upvotes_count_atom';
 
 export const UpVotesCounter = () => {
-  const upvotes = useAtomValue(upvotes_atom);
+  const upvotes_count = useAtomValue(upvotes_count_atom);
 
-  return <p>{upvotes}</p>;
+  return <p>{upvotes_count}</p>;
 };

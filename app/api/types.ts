@@ -1,10 +1,21 @@
+import {NextResponse} from 'next/server';
+import {MyVote} from 'ui/atoms/vote/my_vote_atom';
+
 export type VoteRequestBody = {
   word_id: number;
 };
 
+export type MyVoteRequestBody = {
+  word_id: number;
+};
+
+export type MyVoteResponseBody = {vote: MyVote};
+export type MyVoteResponse = NextResponse<MyVoteResponseBody>;
+
 export type VoteResponseBody = {
   upvotes: number;
 };
+export type VoteResponse = NextResponse<VoteResponseBody>;
 
 export type Vote = {
   ip: string;
