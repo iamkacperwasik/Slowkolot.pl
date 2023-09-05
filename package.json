@@ -7,13 +7,8 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.33.1",
-    "@types/node": "20.5.6",
-    "@types/react": "18.2.21",
-    "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.15",
     "encoding": "^0.1.13",
-    "eslint": "8.47.0",
-    "eslint-config-next": "13.4.19",
     "jotai": "^2.4.0",
     "next": "13.4.19",
     "postcss": "8.4.28",
@@ -25,6 +20,11 @@
   },
   "devDependencies": {
     "@swc-jotai/react-refresh": "^0.1.0",
+    "@types/node": "20.5.6",
+    "@types/react": "18.2.21",
+    "@types/react-dom": "18.2.7",
+    "eslint": "8.47.0",
+    "eslint-config-next": "13.4.19",
     "supabase": "^1.88.0",
     "typescript": "5.2.2"
   }
