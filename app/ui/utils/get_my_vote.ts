@@ -5,12 +5,7 @@ export const get_my_vote = async (word_id: number) => {
     word_id,
   } satisfies MyVoteRequestBody;
 
-  const my_vote_endpoint =
-    process.env.NODE_ENV === 'development'
-      ? 'http://localhost:3000/api/my_vote'
-      : 'https://www.slowkolot.pl/api/my_vote';
-
-  const my_vote_response = await fetch(my_vote_endpoint, {
+  const my_vote_response = await fetch('/api/my_vote', {
     method: 'POST',
     body: JSON.stringify(my_vote_request_body),
   });

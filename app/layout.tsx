@@ -12,7 +12,6 @@ export default async function RootLayout({children}: {children: React.ReactNode}
   const {word, word_definition, id: word_id} = await get_random_word();
 
   const upvotes = await get_upvotes_count(word_id);
-  const my_vote = await get_my_vote(word_id);
 
   return (
     <WordContext
@@ -21,7 +20,7 @@ export default async function RootLayout({children}: {children: React.ReactNode}
         word_definition,
         word_id,
         upvotes,
-        my_vote,
+        my_vote: null,
       }}
     >
       <html lang='pl'>
