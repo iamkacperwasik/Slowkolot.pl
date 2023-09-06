@@ -1,13 +1,13 @@
 'use client';
 
 import {useVote} from 'ui/hooks/useVote';
-import {UpVoteIcon} from './UpVoteIcon';
+import {UpVoteIcon} from 'ui/components/UpVote/UpVoteIcon';
 
 export const UpVoteButton = () => {
-  const {upvote} = useVote();
+  const vote = useVote();
 
   return (
-    <button className='cursor-pointer' onClick={upvote}>
+    <button className='cursor-pointer' onClick={() => vote('upvote')}>
       <UpVoteIcon />
     </button>
   );

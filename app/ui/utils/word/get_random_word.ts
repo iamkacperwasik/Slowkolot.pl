@@ -1,3 +1,5 @@
+import 'server-only';
+
 import {supabase_client} from 'supabase/client';
 
 export const get_random_word = async () => {

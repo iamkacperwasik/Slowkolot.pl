@@ -1,30 +1,36 @@
-'use client';
-
-import {useAtomValue, useSetAtom} from 'jotai';
-import {useEffect} from 'react';
-import {my_vote_atom} from 'ui/atoms/vote/my_vote_atom';
-import {word_id_atom} from 'ui/atoms/word/word_id';
 import {Feedback} from 'ui/components/Word/Feedback';
 import {Word} from 'ui/components/Word/Word';
+import {WordContext} from 'ui/components/Word/WordContext';
 import {WordDefinition} from 'ui/components/Word/WordDefinition';
-import {get_my_vote} from 'ui/utils/get_my_vote';
+import {get_my_ip} from 'ui/utils/ip/get_my_ip';
+import {get_my_vote} from 'ui/utils/vote/get_my_vote';
+import {get_upvotes_count} from 'ui/utils/vote/get_upvotes_count';
+import {get_random_word} from 'ui/utils/word/get_random_word';
 
-export default function Home() {
-  const word_id = useAtomValue(word_id_atom);
-  const set_my_vote = useSetAtom(my_vote_atom);
+export default async function Home() {
+  const ip = await get_my_ip();
+  const {word, word_definition, id: word_id} = await get_random_word();
 
-  useEffect(() => {
-    get_my_vote(word_id).then((my_vote) => {
-      set_my_vote(my_vote);
-    });
-  }, []);
+  const [upvotes, my_vote] = await Promise.all([
+    get_upvotes_count(word_id),
+    get_my_vote(word_id, ip),
+  ]);
 
   return (
-    <>
+    <WordContext
+      context={{
+        word,
+        word_definition,
+        word_id,
+        upvotes,
+        my_vote,
+        ip,
+      }}
+    >
       <Feedback />
 
       <Word />
       <WordDefinition />
-    </>
+    </WordContext>
   );
 }
