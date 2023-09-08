@@ -1,6 +1,6 @@
 'use client';
 
-import {createStore, useAtom, useAtomValue} from 'jotai';
+import {createStore, useAtom} from 'jotai';
 import {useEffect, type FC, type ReactNode} from 'react';
 import {Provider as JotaiProvider} from 'jotai';
 import {word_atom} from 'ui/atoms/word/word';
@@ -11,7 +11,7 @@ import {my_vote_atom} from 'ui/atoms/vote/my_vote_atom';
 import {my_ip_atom} from 'ui/atoms/ip/my_ip';
 import {fetch_data} from 'ui/utils/fetch_data';
 
-type Props = {
+type HomePageProps = {
   context: HomePageContext;
   children: ReactNode;
 };
@@ -23,7 +23,7 @@ type HomePageContext = {
   upvotes: number;
 };
 
-export const WordContext: FC<Props> = ({
+export const HomePageContext: FC<HomePageProps> = ({
   children,
   context: {word, word_definition, word_id, upvotes},
 }) => {
