@@ -1,13 +1,11 @@
-'use client';
-
 import Link from 'next/link';
-import {useState} from 'react';
+import {FC} from 'react';
 
-export const Footer = () => {
-  const [words_count] = useState(32);
+type Props = {
+  words_count: number;
+};
 
-  // TODO: `fetch words_count`
-
+export const Footer: FC<Props> = ({words_count}) => {
   return (
     <footer className='my-4 text-sm flex justify-between items-center'>
       <div className='flex gap-4 items-center'>
