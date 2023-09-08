@@ -1,20 +1,37 @@
 import 'globals.css';
 
 import {Inter} from 'next/font/google';
+import {WordContext} from 'ui/components/Word/WordContext';
+import {get_upvotes_count} from 'ui/utils/vote/get_upvotes_count';
+import {get_random_word} from 'ui/utils/word/get_random_word';
 
 const inter = Inter({subsets: ['latin']});
 
-export default function RootLayout({children}: {children: React.ReactNode}) {
-  return (
-    <html lang='pl'>
-      <body className={inter.className + ' bg-gray-950 text-gray-200'}>
-        <div className='py-10 w-[800px] mx-auto text-2xl'>
-          <main>{children}</main>
+export default async function RootLayout({children}: {children: React.ReactNode}) {
+  const {word, word_definition, id: word_id} = await get_random_word();
+  const upvotes = await get_upvotes_count(word_id);
 
-          {/* TODO: rewrite footer */}
-          <footer>footer</footer>
-        </div>
-      </body>
-    </html>
+  return (
+    <WordContext
+      context={{
+        word,
+        word_definition,
+        word_id,
+        upvotes,
+        my_vote: null,
+        ip: '127.0.0.1',
+      }}
+    >
+      <html lang='pl'>
+        <body className={inter.className + ' bg-gray-950 text-gray-200'}>
+          <div className='py-10 w-[800px] mx-auto text-2xl'>
+            <main>{children}</main>
+
+            {/* TODO: rewrite footer */}
+            <footer>footer</footer>
+          </div>
+        </body>
+      </html>
+    </WordContext>
   );
 }
