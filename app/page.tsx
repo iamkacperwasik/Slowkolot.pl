@@ -18,9 +18,11 @@ export default async function Home() {
         upvotes,
       }}
     >
-      <Feedback />
+      <div className='flex gap-4 items-end'>
+        <Word />
+        <Feedback />
+      </div>
 
-      <Word />
       <WordDefinition />
     </HomePageContext>
   );
