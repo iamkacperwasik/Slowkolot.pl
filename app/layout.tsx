@@ -18,8 +18,6 @@ export default async function RootLayout({children}: {children: React.ReactNode}
         word_definition,
         word_id,
         upvotes,
-        my_vote: null,
-        ip: '127.0.0.1',
       }}
     >
       <html lang='pl'>
