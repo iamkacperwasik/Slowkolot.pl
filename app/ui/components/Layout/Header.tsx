@@ -1,6 +1,16 @@
+'use client';
+
 import Link from 'next/link';
+import {useRouter} from 'next/navigation';
 
 export const Header = () => {
+  const {push, refresh} = useRouter();
+
+  const navigate_to_new_word = () => {
+    push('/');
+    refresh();
+  };
+
   return (
     <div className='mb-16 w-max'>
       <Link href='/'>
@@ -11,12 +21,12 @@ export const Header = () => {
       <div className='w-full h-[20px] border-b border-gray-300 mb-4' />
 
       <div className='flex gap-4'>
+        <p className='text-sm hover:underline cursor-pointer' onClick={navigate_to_new_word}>
+          Inne słówko
+        </p>
+
         <Link href='/about'>
           <p className='text-sm hover:underline'>O projekcie</p>
-        </Link>
-
-        <Link href='/list'>
-          <p className='text-sm hover:underline'>Lista słówek</p>
         </Link>
       </div>
     </div>
