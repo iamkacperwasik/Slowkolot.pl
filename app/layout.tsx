@@ -1,6 +1,7 @@
 import 'globals.css';
 
 import {Inter} from 'next/font/google';
+import {Footer} from 'ui/components/Layout/Footer';
 import {WordContext} from 'ui/components/Word/WordContext';
 import {get_upvotes_count} from 'ui/utils/vote/get_upvotes_count';
 import {get_random_word} from 'ui/utils/word/get_random_word';
@@ -25,8 +26,7 @@ export default async function RootLayout({children}: {children: React.ReactNode}
           <div className='py-10 w-[800px] mx-auto text-2xl'>
             <main>{children}</main>
 
-            {/* TODO: rewrite footer */}
-            <footer>footer</footer>
+            <Footer />
           </div>
         </body>
       </html>
