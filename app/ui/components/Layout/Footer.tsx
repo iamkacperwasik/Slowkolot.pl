@@ -28,11 +28,9 @@ export const Footer: FC<Props> = ({words_count}) => {
           </Link>
         </div>
 
-        <Link href='/list' className='hover:underline'>
-          <div>
-            Liczba dostępnych słów: <span className='font-bold'>{words_count}</span>
-          </div>
-        </Link>
+        <p>
+          Liczba dostępnych słów: <span className='font-bold'>{words_count}</span>
+        </p>
       </div>
     </footer>
   );
