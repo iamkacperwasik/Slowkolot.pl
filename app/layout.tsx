@@ -1,6 +1,7 @@
 import 'globals.css';
 
 import {Inter} from 'next/font/google';
+import Script from 'next/script';
 import {Footer} from 'ui/components/Layout/Footer';
 import {Header} from 'ui/components/Layout/Header';
 import {get_words_count} from 'ui/utils/word/get_words_count';
@@ -22,6 +23,17 @@ export default async function RootLayout({children}: {children: React.ReactNode}
 
           <Footer words_count={words_count} />
         </div>
+
+        <Script src='https://www.googletagmanager.com/gtag/js?id=G-XJ2H501N3E' />
+        <Script id='google-analytics'>
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'G-XJ2H501N3E');
+        `}
+        </Script>
       </body>
     </html>
   );
