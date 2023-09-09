@@ -7,6 +7,8 @@ import {get_words_count} from 'ui/utils/word/get_words_count';
 
 const inter = Inter({subsets: ['latin']});
 
+export {metadata} from 'metadata';
+
 export default async function RootLayout({children}: {children: React.ReactNode}) {
   const words_count = await get_words_count();
 
