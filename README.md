@@ -41,9 +41,18 @@ cd Slowkolot.pl
 npm install
 ```
 
+4. Utwórz plik `.env.local` w głównym katalogu projektu i dodaj w nim następujące zmienne:
+
+```js
+SUPABASE_URL = twój_adres_supabase_url;
+SUPABASE_SERVICE_ROLE = twój_service_role;
+```
+
+**Uwaga**: Zastąp `twój_adres_supabase_url` i `twój_service_role` odpowiednimi danymi dostępowymi do Twojej bazy danych Supabase.
+
 ### Uruchamianie aplikacji
 
-Po zainstalowaniu zależności, uruchom projekt za pomocą poniższej komendy:
+Po zainstalowaniu zależności i utworzeniu pliku .env.local, uruchom projekt za pomocą poniższej komendy:
 
 ```bash
 npm run dev
