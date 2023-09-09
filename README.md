@@ -81,7 +81,8 @@ Słówkolot.pl został zbudowany przy użyciu szeregu nowoczesnych technologii, 
 
 ## Rozwój projektu
 
-Jeśli masz pomysły na rozwinięcie projektu Słówkolot.pl lub chcesz zgłosić błędy, zapraszam do tworzenia zgłoszeń typu pull request na GitHubie lub kontaktowania się ze mną poprzez stronę internetową.
+Jeśli masz pomysły na rozwinięcie projektu Słówkolot.pl lub chcesz zgłosić błędy, zapraszam do kontaktu poprzez adres email: [kacper@wasik.me](mailto:kacper@wasik.me).
+Czekam na Twoje sugestie i opinie!
 
 ## Licencja
 
