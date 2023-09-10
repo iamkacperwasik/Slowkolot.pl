@@ -7,8 +7,12 @@ type Props = {
 
 export const Footer: FC<Props> = ({words_count}) => {
   return (
-    <footer className='my-4'>
-      <div className='flex justify-between items-center text-sm text-gray-300'>
+    <footer className='mt-8'>
+      <div className='flex flex-col sm:flex-row sm:justify-between gap-2 text-sm text-gray-300'>
+        <p className='sm:order-2'>
+          Liczba dostępnych słów: <span className='font-bold'>{words_count}</span>
+        </p>
+
         <div className='flex gap-4 items-center'>
           <div>
             <span>&copy; 2023 </span>
@@ -27,10 +31,6 @@ export const Footer: FC<Props> = ({words_count}) => {
             Source code
           </Link>
         </div>
-
-        <p>
-          Liczba dostępnych słów: <span className='font-bold'>{words_count}</span>
-        </p>
       </div>
     </footer>
   );

@@ -43,9 +43,9 @@ npm install
 
 4. Utwórz plik `.env.local` w głównym katalogu projektu i dodaj w nim następujące zmienne:
 
-```js
-SUPABASE_URL = twój_adres_supabase_url;
-SUPABASE_SERVICE_ROLE = twój_service_role;
+```txt
+SUPABASE_URL = twój_adres_supabase_url
+SUPABASE_SERVICE_ROLE = twój_service_role
 ```
 
 **Uwaga**: Zastąp `twój_adres_supabase_url` i `twój_service_role` odpowiednimi danymi dostępowymi do Twojej bazy danych Supabase.

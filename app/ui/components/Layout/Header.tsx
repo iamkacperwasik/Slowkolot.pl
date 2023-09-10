@@ -12,21 +12,22 @@ export const Header = () => {
   };
 
   return (
-    <div className='mb-16 w-max'>
+    <div className='mb-8 py-4 sm:w-max w-full'>
       <Link href='/'>
-        <h1 className='text-[40px] font-bold tracking-wide mb-2'>Słówkolot.pl</h1>
+        <h1 className='text-[30px] md:text-[50px] font-bold tracking-wide mb-2'>Słówkolot.pl</h1>
       </Link>
-      <p className='text-xl tracking-wide'>Ciekawostki słownicze w Zasięgu Kliknięcia!</p>
 
-      <div className='w-full h-[20px] border-b border-gray-300 mb-4' />
+      <p className='tracking-wide lg:text-[20px]'>Ciekawostki słownicze w Zasięgu Kliknięcia!</p>
 
-      <div className='flex gap-4'>
-        <p className='text-sm hover:underline cursor-pointer' onClick={navigate_to_new_word}>
+      <div className='h-[20px] border-b border-gray-300 mb-4' />
+
+      <div className='flex gap-4 lg:text-[20px]'>
+        <p className='hover:underline cursor-pointer' onClick={navigate_to_new_word}>
           Inne słówko
         </p>
 
         <Link href='/about'>
-          <p className='text-sm hover:underline'>O projekcie</p>
+          <p className='hover:underline'>O projekcie</p>
         </Link>
       </div>
     </div>

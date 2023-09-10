@@ -4,7 +4,7 @@ import {UpVotesCounter} from '../UpVote/UpVoteCounter';
 
 export const Feedback = () => {
   return (
-    <section className='flex gap-4 items-center mb-4 text-xl'>
+    <section className='flex gap-4 items-center text-[20px]'>
       <div className='flex items-center gap-2'>
         <UpVoteButton />
         <UpVotesCounter />
